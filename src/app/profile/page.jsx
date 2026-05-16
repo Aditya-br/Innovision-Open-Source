@@ -179,7 +179,7 @@ export default function ProfilePage() {
           feature={blockedFeature}
         />
 
-        <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,320px)_minmax(0,1fr)] gap-6">
           {/* Left Sidebar - All original features */}
           <Sidebar
             user={userData}
@@ -190,7 +190,7 @@ export default function ProfilePage() {
           />
 
           {/* Main Content - All original tabs */}
-          <div className="space-y-6">
+          <div className="min-w-0 space-y-6">
             <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-4">
               {/* Tab Navigation Pager (Mobile Optimized) */}
               <div className="relative group">
