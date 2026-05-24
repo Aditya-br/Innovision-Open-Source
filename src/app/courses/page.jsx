@@ -62,10 +62,16 @@ export default function CoursesPage() {
     setLoading(false);
   };
 
-  const filteredCourses = courses.filter(course =>
-    course.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    course.description?.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const normalizedSearchQuery = searchQuery.toLowerCase();
+  const filteredCourses = courses.filter((course) => {
+    const title = course.title || "";
+    const description = course.description || "";
+
+    return (
+      title.toLowerCase().includes(normalizedSearchQuery) ||
+      description.toLowerCase().includes(normalizedSearchQuery)
+    );
+  });
 
   const enrollInCourse = (course) => {
     if (course.type === "ingested" || course.courseType === "ingested") {
